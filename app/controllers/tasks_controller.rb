@@ -4,15 +4,15 @@ class TasksController < ApplicationController
   end
 
   def show
-      @tasks = Task.find(params[:id])
+      @task = Task.find(params[:id])
   end
 
   def new
-      @tasks = Task.new
+      @task = Task.new
   end
 
   def create
-    @task = Tesk.new(task_params)
+    @task = Task.new(task_params)
 
     if @task.save
       flash[:success] = 'Task が正常に追加されました'
@@ -32,7 +32,7 @@ class TasksController < ApplicationController
 
     if @task.update(task_params)
       flash[:success] = 'Task は正常に更新されました'
-      redirect_to @message
+      redirect_to @task
     else
       flash.now[:danger] = 'Task は更新されませんでした'
       render :edit
